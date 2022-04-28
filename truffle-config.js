@@ -1,3 +1,7 @@
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+ const mnemonic = '';
+
+//const mnemonic = 'until clutch idle dwarf foster legend snap night skin gospel produce bar'; //test// 
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -41,6 +45,22 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
+    ethTestnet: {
+      provider: () => new HDWalletProvider(
+        mnemonic, 
+       // 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161/'
+        'https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161'
+      ),
+     // network_id: 4, //rinkeby
+      network_id: 3, //ropsten
+      gas: 5000000,
+      gasPrice: 40000000000,
+      timeoutBlocks: 800,
+      skipDryRun: false,
+      websocket: true,
+      timeoutBlocks: 900000,
+      networkCheckTimeout: 90000000
+    }
     // development: {
     //  host: "127.0.0.1",     // Localhost (default: none)
     //  port: 8545,            // Standard Ethereum port (default: none)
